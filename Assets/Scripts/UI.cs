@@ -1,50 +1,49 @@
-using Newtonsoft.Json.Linq;
-using System;
-using System.Data;
-using TestTask;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI : MonoBehaviour
+namespace TestTask
 {
-    [SerializeField] private Hero _player;
-    [Space]
-    [SerializeField] private Text _enemiesKilledText;
-    [SerializeField] private Text _moveSpeedText;
-    [SerializeField] private Text _damageText;
-    [SerializeField] private Text _damageAreaText;
-
-    public  int _enemiesKilledAmount;
-
-    private void Awake()
+    public class UI : MonoBehaviour
     {
-        Enemy.OnEnemyDeath += UpdateEnemiesKilledAmount;
+        [SerializeField] private Hero _player;
+        [Space]
+        [SerializeField] private Text _enemiesKilledText;
+        [SerializeField] private Text _moveSpeedText;
+        [SerializeField] private Text _damageText;
+        [SerializeField] private Text _damageAreaText;
 
-        _player.OnMoveSpeedPowerUp += UpdateMoveSpeedText;
-        _player.OnDamagePowerUp += UpdateDamageText;
-        _player.OnAoEPowerUp += UpdateDamageAreaText;
+        public int _enemiesKilledAmount;
 
-        _enemiesKilledText.text = $"ENEMIES KILLED: {_enemiesKilledAmount}";
-    }
+        private void Awake()
+        {
+            Enemy.OnEnemyDeath += UpdateEnemiesKilledAmount;
 
-    private void UpdateEnemiesKilledAmount()
-    {
-        _enemiesKilledAmount++;
-        _enemiesKilledText.text = $"ENEMIES KILLED: {_enemiesKilledAmount}";
-    }
+            _player.OnMoveSpeedPowerUp += UpdateMoveSpeedText;
+            _player.OnDamagePowerUp += UpdateDamageText;
+            _player.OnAoEPowerUp += UpdateDamageAreaText;
 
-    private void UpdateMoveSpeedText(float value)
-    {
-        _moveSpeedText.text = $"Move Speed: {value}";
-    }
+            _enemiesKilledText.text = $"ENEMIES KILLED: {_enemiesKilledAmount}";
+        }
 
-    private void UpdateDamageText(float value)
-    {
-        _damageText.text = $"Damage: {value}";
-    }
+        private void UpdateEnemiesKilledAmount()
+        {
+            _enemiesKilledAmount++;
+            _enemiesKilledText.text = $"ENEMIES KILLED: {_enemiesKilledAmount}";
+        }
 
-    private void UpdateDamageAreaText(float value)
-    {
-        _damageAreaText.text = $"Area of Damage: {value}";
+        private void UpdateMoveSpeedText(float value)
+        {
+            _moveSpeedText.text = $"Move Speed: {value}";
+        }
+
+        private void UpdateDamageText(float value)
+        {
+            _damageText.text = $"Damage: {value}";
+        }
+
+        private void UpdateDamageAreaText(float value)
+        {
+            _damageAreaText.text = $"Area of Damage: {value}";
+        }
     }
 }

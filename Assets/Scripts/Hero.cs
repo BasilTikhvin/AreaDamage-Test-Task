@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace TestTask
@@ -93,7 +91,7 @@ namespace TestTask
                 {
                     if (Vector3.Distance(transform.position, array[i].transform.position) > Vector3.Distance(transform.position, array[i + 1].transform.position))
                     {
-                        var temp = array[i];
+                        Collider temp = array[i];
                         array[i] = array[i + 1];
                         array[i + 1] = temp;
                     }
